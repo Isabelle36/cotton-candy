@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono,Inter,Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-// import "tw-animate-css/dist/tw-animate.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} ${inter.variable}  antialiased`}
       >
@@ -48,3 +47,4 @@ export default function RootLayout({
     </html>
   );
 }
+

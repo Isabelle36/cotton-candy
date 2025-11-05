@@ -2,7 +2,7 @@ import React from "react";
 import { Type, Scan, CloudUpload, Image as WallpaperIcon, SlidersVertical, Laptop, Save, ArrowDownToLine } from "lucide-react";
 
 
-export default function HeroDock() {
+export default function HeroDock({ onSelect }: { onSelect?: (panel: string) => void }) {
   const accent =
     typeof window !== "undefined"
       ? getComputedStyle(document.documentElement).getPropertyValue("--hero-accent").trim()
@@ -18,8 +18,8 @@ export default function HeroDock() {
       {/* fixed bottom-center wrapper: pointer-events-none to allow clicks through outer area, pointer-events-auto on inner box */}
       <div className="fixed bottom-8 left-0 right-0 flex justify-center pointer-events-none z-40">
         <div className="pointer-events-auto w-full max-w-[720px] px-4">
-          <div className="flex items-center justify-center">
-            <Dock />
+          <div className="flex ml-[38%] items-center justify-center">
+            <Dock onSelect={onSelect} />
           </div>
         </div>
       </div>
@@ -45,29 +45,30 @@ export default function HeroDock() {
   );
 }
 
-function Dock() {
+function Dock({ onSelect }: { onSelect?: (panel: string) => void }) {
   return (
-  <div className="relative flex items-center gap-1 sm:gap-2 scale-75 sm:scale-95">
-  <div className="flex items-center gap-2 rounded-2xl bg-neutral-900/80 px-2 py-1.5 shadow-2xl ring-1 ring-white/10 backdrop-blur-lg sm:gap-3 sm:rounded-3xl sm:px-3 sm:py-2">
-  <DockIcon icon={Type} label="Text" />
-  <DockIcon icon={Scan} label="Aspect Ratio" />
-  <DockIcon icon={CloudUpload} label="Upload" />
-  <DockIcon icon={WallpaperIcon} label="Background" />
-  {/* <DockIcon icon={SlidersVertical} label="Adjust" /> */}
-  <DockIcon icon={Laptop} label="Mac Frame" />
+    <div className="relative flex items-center gap-1 sm:gap-2 scale-75 sm:scale-80">
+      <div className="flex items-center gap-2 rounded-2xl bg-neutral-900/80 px-2 py-1.5 shadow-2xl ring-1 ring-white/10 backdrop-blur-lg sm:gap-3 sm:rounded-3xl sm:px-3 sm:py-2">
+        <DockIcon icon={Type} label="Text" onSelect={onSelect} />
+        <DockIcon icon={Scan} label="Aspect Ratio" onSelect={onSelect} />
+        <DockIcon icon={CloudUpload} label="Upload" onSelect={onSelect} />
+        <DockIcon icon={WallpaperIcon} label="Background" onSelect={onSelect} />
+        {/* <DockIcon icon={SlidersVertical} label="Adjust" /> */}
+        <DockIcon icon={Laptop} label="Mac Frame" onSelect={onSelect} />
         <span className="mx-1 hidden h-5 w-px bg-white/10 sm:block" aria-hidden="true" />
-  <DockIcon icon={Save} label="Save Design" />
-  <DockIcon icon={ArrowDownToLine} label="Download" />
+        <DockIcon icon={Save} label="Save Design" onSelect={onSelect} />
+        <DockIcon icon={ArrowDownToLine} label="Download" onSelect={onSelect} />
       </div>
     </div>
   );
 }
 
-function DockIcon({ icon: Icon, label, badge }: { icon: any; label: string; badge?: string }) {
+function DockIcon({ icon: Icon, label, badge, onSelect }: { icon: any; label: string; badge?: string; onSelect?: (panel: string) => void }) {
   return (
     <button
       className="hover-halo group cursor-pointer relative grid h-10 w-10 place-items-center rounded-lg ring-1 ring-white/10 bg-gradient-to-b from-neutral-800/60 to-neutral-900/70 backdrop-blur-xl shadow-lg transition-transform duration-200 hover:-translate-y-0.5 hover:scale-[1.03] sm:h-12 sm:w-12"
       aria-label={label}
+      onClick={() => onSelect?.(label)}
     >
       <Icon className="h-4 w-4 text-white/85 transition-transform duration-200 group-hover:scale-105" strokeWidth={2.1} />
       {badge ? (
