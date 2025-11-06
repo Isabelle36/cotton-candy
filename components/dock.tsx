@@ -47,17 +47,17 @@ export default function HeroDock({ onSelect }: { onSelect?: (panel: string) => v
 
 function Dock({ onSelect }: { onSelect?: (panel: string) => void }) {
   return (
-    <div className="relative flex items-center gap-1 sm:gap-2 scale-75 sm:scale-80">
+    <div className="relative flex items-center gap-1 sm:gap-2 scale-75 sm:scale-90">
       <div className="flex items-center gap-2 rounded-2xl bg-neutral-900/80 px-2 py-1.5 shadow-2xl ring-1 ring-white/10 backdrop-blur-lg sm:gap-3 sm:rounded-3xl sm:px-3 sm:py-2">
         <DockIcon icon={Type} label="Text" onSelect={onSelect} />
-        <DockIcon icon={Scan} label="Aspect Ratio" onSelect={onSelect} />
-        <DockIcon icon={CloudUpload} label="Upload" onSelect={onSelect} />
+        {/* <DockIcon icon={Scan} label="Aspect Ratio" onSelect={onSelect} /> */}
+        <DockIcon icon={CloudUpload} label="Image Upload" onSelect={onSelect} />
         <DockIcon icon={WallpaperIcon} label="Background" onSelect={onSelect} />
         {/* <DockIcon icon={SlidersVertical} label="Adjust" /> */}
         <DockIcon icon={Laptop} label="Mac Frame" onSelect={onSelect} />
         <span className="mx-1 hidden h-5 w-px bg-white/10 sm:block" aria-hidden="true" />
-        <DockIcon icon={Save} label="Save Design" onSelect={onSelect} />
-        <DockIcon icon={ArrowDownToLine} label="Download" onSelect={onSelect} />
+        <DockIcon icon={Save} label="Save Design" />
+        <DockIcon icon={ArrowDownToLine} label="Download"  />
       </div>
     </div>
   );
