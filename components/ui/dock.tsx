@@ -53,8 +53,8 @@ function Dock({ onSelect }: { onSelect?: (panel: string) => void }) {
         {/* <DockIcon icon={Scan} label="Aspect Ratio" onSelect={onSelect} /> */}
         <DockIcon icon={CloudUpload} label="Image Upload" onSelect={onSelect} />
         <DockIcon icon={WallpaperIcon} label="Background" onSelect={onSelect} />
-        {/* <DockIcon icon={SlidersVertical} label="Adjust" /> */}
-        <DockIcon icon={Laptop} label="Mac Frame" onSelect={onSelect} />
+        <DockIcon icon={SlidersVertical} onSelect={onSelect}  label="Adjustments" />
+        <DockIcon icon={Laptop} label="Frames" onSelect={onSelect} />
         <span className="mx-1 hidden h-5 w-px bg-white/10 sm:block" aria-hidden="true" />
         <DockIcon icon={Save} label="Save Design" />
         <DockIcon icon={ArrowDownToLine} label="Download"  />

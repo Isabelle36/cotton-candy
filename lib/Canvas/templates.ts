@@ -50,8 +50,27 @@ export const templates: Template[] = [
       imageUrl: "/background images/Green mountains.jpg",
     },
   },
+  // Generate abstract gradient images (use .png for 17/18 like the mac-os logic)
+  ...Array.from({ length: 18 }, (_, idx) => {
+    const n = idx + 1;
+    // first file is "abstract gradient.jpg" (no number)
+    const baseName = n === 1 ? "abstract gradient" : `abstract gradient ${n}`;
+    // use png for 17 and 18, jpg otherwise
+    const ext = n === 17 || n === 18 ? "png" : "jpg";
+    const imageUrl = `/background images/${baseName}.${ext}`;
+
+    return {
+      id: `image-abstract-gradient-${n}`,
+      name: `Abstract Gradient ${n}`,
+      background: {
+        type: "image" as const,
+        imageUrl,
+        isGradientImage: true,
+      },
+    } as Template;
+  }),
   // Adding mac os images
-  ...Array.from({ length: 13 }, (_, i) => ({
+  ...Array.from({ length: 8 }, (_, i) => ({
     id: `image-mac-os-${i + 1}`,
     name: `Mac OS ${i + 1}`,
     background: {
@@ -60,7 +79,7 @@ export const templates: Template[] = [
     },
   })),
   // Adding min images
-  ...Array.from({ length: 27 }, (_, i) => ({
+  ...Array.from({ length: 43 }, (_, i) => ({
     id: `image-min-${i + 1}`,
     name: `Min ${i + 1}`,
     background: {
