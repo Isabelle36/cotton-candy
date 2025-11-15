@@ -1,4 +1,4 @@
-import { MainEditor } from "./My components/MainEditor";
+import { MainEditor } from "../components/Editor/MainEditor";
 
 export default function Home() {
   return (

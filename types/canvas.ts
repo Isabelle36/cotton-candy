@@ -21,6 +21,8 @@ export interface Background {
     to: string;
   };
   imageUrl?: string;
+  // mark an image as an image-based gradient thumbnail
+  isGradientImage?: boolean;
 }
 
 export interface Template {
@@ -28,3 +30,4 @@ export interface Template {
   name: string;
   background: Background;
 }
+

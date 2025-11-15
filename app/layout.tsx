@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono,Inter,Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { AdjustmentsProvider } from "@/lib/adjustmentsStore";
 
 
 const geistSans = Geist({
@@ -42,7 +43,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} ${inter.variable}  antialiased`}
       >
-        {children}
+        <AdjustmentsProvider>
+          {children}
+        </AdjustmentsProvider>
       </body>
     </html>
   );
